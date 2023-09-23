@@ -1,0 +1,44 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: g++.exe 建置使用中檔案",
+            "command": "C:\\msys64\\mingw64\\bin\\g++.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "${workspaceFolder}\\CurlProcess\\CurlProcess.cpp",
+                "${workspaceFolder}\\Input\\Input.cpp",
+                "${workspaceFolder}\\Logger\\Logger.cpp",
+                "${workspaceFolder}\\ParseData\\ParseData.cpp",
+                "${file}",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "-L${workspaceFolder}\\lib",
+                "-I${workspaceFolder}\\CurlProcess",
+                "-I${workspaceFolder}\\Input",
+                "-I${workspaceFolder}\\Logger",
+                "-I${workspaceFolder}\\Timer",
+                "-I${workspaceFolder}\\ParseData",
+                "-I${workspaceFolder}\\include",
+                "-static-libgcc",
+                "-static-libstdc++",
+                "-Wl,-rpath=${workspaceFolder}\\lib",
+                "-llibcurl"
+
+            ],
+            "options": {
+                "cwd": "C:\\msys64\\mingw64\\bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "編譯器: C:\\msys64\\mingw64\\bin\\g++.exe"
+        }
+    ],
+    "version": "2.0.0"
+}

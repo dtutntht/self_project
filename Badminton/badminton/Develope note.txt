@@ -1,0 +1,38 @@
+https://fe.xuanen.com.tw/fe02.aspx?module=net_booking&files=booking_place&StepFlag=25&QPid=2116&QTime=12&PT=1&D=2022/09/23
+https://fe.xuanen.com.tw/fe02.aspx?module=net_booking&files=booking_place&StepFlag=25&QPid=2116&QTime=8&PT=1&D=2022/09/30
+ASP.NET_SessionId=xeuayqte2cyo3svluer4kc4n
+
+A. Hard Requirement : 
+
+1. We NEED to play in the same court, so continuous 2 hours with 2 different court is not what we want.
+
+2. Continuous 2hours-play time is fixed, so we need to check if same court can be booked by coutinuous 2 hours.
+
+3. There is 3 section of time interval, 06:00-12:00, 12:00-18:00 and 18:00-22:00,there is no requirement to book accross two time interval.
+
+-----
+
+B. Perform step : 
+
+1. Input SessionID, Target Date and Target Time.
+
+2. curl_easy_perform to download the specific website html source code according to date USER input.
+   in order to parse the html code and check if any court we can book.
+   (Using for-loop to get all of them at the same time.)
+
+3. Perform parsing job to analysis which court we can book in the same date, this also need a for loop to check for all dates' html information.
+
+4. In the same for loop, if we found the target, input all the parameter to curl the booking website, which is on top of this file.
+   Noted that I will try the pattern that book immediately after we found the target, to increase the rate of successful.
+   
+5. Program will be performed for specific loop(or specific time) to let User can activate before the booking information is refresh.
+
+-----
+
+C. Tips
+
+1. In order to trigger the booking, we need to make sure all the redirection accessed behind the explorer is followed.
+   Thus we might need "CURLOPT_FOLLOWLOCATION" parameter to follow the redirection.
+   
+2. In order to get into the website with Login status, we will need to import related cookie that can represent the login status.
+   Thus, we might need "CURLOPT_COOKIE" to send the pre-required cookie(get from chrome) to let server know that we are now login.
